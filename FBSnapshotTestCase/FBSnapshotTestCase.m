@@ -39,6 +39,11 @@
     _snapshotController.recordMode = recordMode;
 }
 
+- (void)setShouldSucceedInRecordMode:(BOOL)shouldSucceedInRecordMode
+{
+    NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+}
+
 - (FBSnapshotTestCaseFileNameIncludeOption)fileNameOptions
 {
     return _snapshotController.fileNameOptions;
@@ -125,7 +130,7 @@
             [errors addObject:error];
         }
 
-        return @"Test ran in record mode. Reference image is now saved. Disable record mode to perform an actual snapshot comparison!";
+        return self.shouldSucceedInRecordMode ? nil : @"Test ran in record mode. Reference image is now saved. Disable record mode to perform an actual snapshot comparison!";
     } else {
         BOOL testSuccess = NO;
         for (NSString *suffix in suffixes) {

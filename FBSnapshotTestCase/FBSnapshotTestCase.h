@@ -137,6 +137,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readwrite, nonatomic, assign) BOOL recordMode;
 
 /**
+ When YES, and recordMode is also YES, the tests will be marked as succeeded instead of failed
+ */
+@property (readwrite, nonatomic, assign) BOOL shouldSucceedInRecordMode;
+
+/**
  When set, allows fine-grained control over what you want the file names to include.
 
  Allows you to combine which device or simulator specific details you want in your snapshot file names.
