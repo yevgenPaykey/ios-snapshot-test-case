@@ -39,9 +39,15 @@
     _snapshotController.recordMode = recordMode;
 }
 
+- (BOOL)shouldSucceedInRecordMode
+{
+    return _snapshotController.shouldSucceedInRecordMode;
+}
+
 - (void)setShouldSucceedInRecordMode:(BOOL)shouldSucceedInRecordMode
 {
     NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+    _snapshotController.shouldSucceedInRecordMode = shouldSucceedInRecordMode;
 }
 
 - (FBSnapshotTestCaseFileNameIncludeOption)fileNameOptions
